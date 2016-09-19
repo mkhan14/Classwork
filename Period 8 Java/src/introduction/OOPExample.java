@@ -21,6 +21,18 @@ public class OOPExample {
 		//can't make student talk first
 		//senior can't exist without a student existing. senior constructor includes student constructor. senior is a student
 		
+		//9/19/16:
+		//encapsulation: private fields
+		//polymorphism: calling a senior a studfent
+		//inheritance: inhereting the talk method
+		//primitive types:data that is not its own class(objects are made up of primitive
+		//types)
+		//String- is made up of a char[]
+		//size-byte, short, int, boolean, long(time in milliseconds), float, double (long)
+		//(Integer), (Floating Point)
+		//int has less space than the double, is good so computer works optimally
+		//double is twice the size of a float (in storage space)
+		
 	}
 
 }
