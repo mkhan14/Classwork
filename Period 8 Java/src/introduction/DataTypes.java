@@ -10,6 +10,7 @@ public class DataTypes {
 		System.out.println(3+5.0/2+5*2);
 		System.out.println((int)(3.0 + 5)/(2 + 5 * 2));
 		if(42 == 42.0) System.out.println("42 equals 42.0");
+		//more info takes precedence over less info
 		
 
 		double d1 = 4.64; 
@@ -59,6 +60,19 @@ public class DataTypes {
 		//int/int is int
 		//diuble/ubt is double
 		//hw due 9/20/16 is: do Lesson 0.3, no writing necessary
+		
+		//.1+.2 = .3000000000000000004
+		//-128 to 127 bytes
+		//primitive type is not a class
+		//violates encapsulation
+		//cant go up the chain
+		
+		String ten = "10";
+		String two = "2";
+		if(ten.compareTo(two)>0) System.out.println("10 is greater than two");
+		else System.out.println("10 is not greater than two");
+		//strings are naturally ordered in alphabetical order
+			
 	}
 
 }
