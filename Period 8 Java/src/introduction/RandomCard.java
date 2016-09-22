@@ -4,25 +4,28 @@ public class RandomCard {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String[] suit = {"King", "Queen", "Jack", "Ace"};
-		String[] symbol = {"Diamonds", "Spades", "Hearts", "Clubs"};
+		String[] suits = {"King", "Queen", "Jack", "Ace", "Ten", "Nine", "Eight", "Seven", "Six", "Five", "Four", "Three",
+			"Two", "One"
+		};
+		String[] symbols = {"Diamonds", "Spades", "Hearts", "Clubs"};
 		
-		System.out.println("The "+suit[draw]+" of "+symbol[draw]);
+		System.out.println("The "+suit[drawSuit()]+" of "+symbol[drawSymbol]);
 		//drawCard();
 	}
 	
 	public static int drawSuit(){
 		double rand = Math.random();
-		int drawSu = (int)(4*rand);
-		
+		int drawSu = (int)(suits.length*rand);
+		return drawSu;
 		
 	}
 	
 	public static int drawSymbol(){
 		double rand = Math.random();
-		int drawSy = (int)(4*rand);
+		int drawSy = (int)(symbols.length*rand);
+		return drawSy;
 		
-		System.out.println("The "+suit[draw]+" of "+symbol[draw]);
+		//System.out.println("The "+suit[draw]+" of "+symbol[draw]);
 	}
 
 }
