@@ -9,13 +9,16 @@ public class RandomCard {
 	}
 	
 	public static void drawCard(){
-		String[] suit = {"King", "Queen", "Jack", "Ace"};
-		String[] symbol = {"Diamonds", "Spades", "Hearts", "Clubs"};
+		String[] suits = {"King", "Queen", "Jack", "Ace", "Ten", "Nine", "Eight", "Seven", "Six", 
+				"Five", "Four", "Three", "Two", "One"};
+		String[] symbols = {"Diamonds", "Spades", "Hearts", "Clubs"};
 		
-		double rand = Math.random();
-		int draw = (int)(4*rand);
+		//double rand = Math.random();
+		//int draw = (int)(4*rand);
+		int symbol =(int) (Math.random()*symbols.length);
+		int suit = (int)(Math.random()*suits.length);
 		
-		System.out.println("The "+suit[draw]+" of "+symbol[draw]);
+		System.out.println("The "+suits[suit]+" of "+symbols[symbol]);
 	}
 
 }
