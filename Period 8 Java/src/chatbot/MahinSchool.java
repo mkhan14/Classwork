@@ -25,4 +25,20 @@ public class MahinSchool implements Chatbot{ //automatically extends object. eve
 			//preceding not or no
 		}
 	}
+
+	@Override
+	public boolean isTriggered(String userInput) {
+		// TODO Auto-generated method stub
+		String[] triggers = {"school", "class", "teacher"};
+		//idea: create a for loop to iterate through your array of triggers
+		
+		if(MahinMain.findKeyword(userInput, "school", 0)>=0){
+			return true;
+		}
+		if(MahinMain.findKeyword(userInput, "class", 0)>=0){
+			return true;
+		}
+		return false;
+	}
+
 }
