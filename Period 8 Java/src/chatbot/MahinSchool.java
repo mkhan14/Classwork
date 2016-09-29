@@ -40,5 +40,4 @@ public class MahinSchool implements Chatbot{ //automatically extends object. eve
 		}
 		return false;
 	}
-
 }
