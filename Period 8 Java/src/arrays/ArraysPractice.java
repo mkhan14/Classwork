@@ -13,15 +13,68 @@ public class ArraysPractice {
 		standardPopulate(someStrings);
 		String s = someStrings[999];
 		makeSpecial(s);
-		print(someStrings);
+		someStrings[999] = getASpecialString();
+		//print(someStrings); print accepted string array parameter
 		
 		long endTime = System.currentTimeMillis();
 		System.out.println("The process took " + (endTime-currentTime) + "ms." );
+		
+		int[] fiftyNumbers = new int[50];
+		populate(fiftyNumbers);
+		//print(fiftyNumbers);
+		//randomize(fiftyNumbers);
+		//print(fiftyNumbers);
+		rollDice(fiftyNumbers, 50); //roll 2 die
+		//count each die roll and provide a percentage
+		countResult(fiftyNumbers, 4);
 		
 		//int x = 10;
 		//x = increase(x);
 		//System.out.println(x);
 	}
+	
+	private static void countResult(int[] fiftyNumbers, int numberOfDice) {
+		int[] counter = new int[numberOfDice * 6];
+		//populate(counter);
+		for(int n: fiftyNumbers){
+			counter[n-1] = counter[n - 1] + 1;
+		}
+		for(int i = numberOfDice - 1; i < counter.length; i++){
+			System.out.println((i + 1) + " was rolled" + 100*counter[i]/fiftyNumbers.length + "percent of the time");
+		}
+		//can specify the number of dice
+	}
+
+	private static void rollDice(int[] fiftyNumbers, int numberOfDice) {
+		//for(int i = 0; i < fiftyNumbers.length; i++){
+			//fiftyNumbers[i] = (int) ((Math.random() * 6) + 1);
+		//}
+		
+		for(int i = 0; i < fiftyNumbers.length; i++){
+			int dice = 0;
+			for(int j = 0; j < numberOfDice; j++){
+				dice = dice + (int) (1+6*Math.random());
+			}
+			fiftyNumbers[i] = dice;
+		}
+	}
+
+	private static void randomize(int[] fiftyNumbers, int max) {
+		for(int i = 0; i < fiftyNumbers.length; i++){
+			fiftyNumbers[i] = (int) ((Math.random() * max) + 1);
+		}	
+	}
+
+	private static void populate(int[] fiftyNumbers) {
+		for(int i = 0; i < fiftyNumbers.length; i++){
+			fiftyNumbers[i] = i + 1;
+		}
+	}
+
+	private void passByValue(){
+		
+	}
+	
 	/*public static void initializingArraysExample(){
 		//primitive type[]:
 				//primitive types are "already" in the system, start as zero.
@@ -98,13 +151,18 @@ public class ArraysPractice {
 			//AP Exam 1 or 2 questions: pass-by-value is a way in which java operates
 	}*/
 
+	private static String getASpecialString() {
+		String s = "THIS STRING IS SPECIAL";
+		return s;
+	}
+
 	private static void makeSpecial(String s) {
 		s = "THIS STRING IS SPECIAL!";
 		//pass by value means when u change a local variable ur not changing the value
 		//you are changing what the value is assigned to
 	}
 
-	private static void print(String[] s) {
+	private static void print(int[] s) {
 		for(int i = 0; i < s.length; i++){
 			System.out.println(s[i]);
 		}
