@@ -25,16 +25,26 @@ public class AdvancedArrayMethods {
 		} doesn't work*/
 		
 		String[] array = {"a", "b", "c", "d", "e", "f", "g", "h"};
-		swap(array, 0,array.length -1);
+		//swap(array, 0,array.length -1);
+		shuffle(array);
 	}
 	
-	private static void swap(String[] arr, int a, int b) {
+	private static void shuffle(Object[] array) {
+		for(int i = 0; i < array.length; i++){
+			int random = (int)(Math.random()*6);
+			swap(array, i, random);
+			//come in class monday prepared to ask about arrayMethods confusion
+		}
+		
+	}
+
+	private static void swap(Object[] arr, int a, int b) {
 		//AP exam obsessed with this method
 		//2 elements
 		//create placeholder
 		//store b in placeholder
 		//a is equal to placeholder
-		String placeholder = arr[b];
+		Object placeholder = arr[b];
 		arr[b] = arr[a];
 		arr[a] = placeholder;
 		
