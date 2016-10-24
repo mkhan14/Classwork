@@ -33,7 +33,7 @@ public class AdvancedArrayMethods {
 		for(int i = 0; i < array.length; i++){
 			int random = (int)(Math.random()*6);
 			swap(array, i, random);
-			//come in class monday prepared to ask about arrayMethods confusion
+			//come in class monday prepared to ask about arrayMethods confusion.
 		}
 		
 	}
