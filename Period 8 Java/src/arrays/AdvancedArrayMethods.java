@@ -34,8 +34,46 @@ public class AdvancedArrayMethods {
 			int random = (int)(Math.random()*6);
 			swap(array, i, random);
 			//come in class monday prepared to ask about arrayMethods confusion.
+			//for reverse order, the array that is passed is itself changed.
+			//for getstats, make sure u get indices right
 		}
 		
+	}
+	
+	public static int longestSharedSequence(int[] array1, int[] array2){
+		int max = 0;
+		int count = 0;
+		
+		for(int seqStart = 0; seqStart < array1.length; seqStart++){
+			//has to be in a loop
+			int seqEnd = seqStart;
+			int[] seq = getSequence(seqStart, seqEnd, array1);
+			if(checkSequence(seq, array2)){
+				count++;
+				if(count > max){
+					max = count;
+				}
+			}
+			//until this...seqEnd has to be increased after loop repeats
+			//until u cant find the sequence anymore
+			//reset the count after every sequence ahs been checked
+			count = 0;
+		}
+		
+		return max;
+	}
+
+	//returns true if sequence is found inside array2
+	private static boolean checkSequence(int[] seq, int[] array2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	//returns a sub-array containing the elements in array1 from seqStart
+	//to seqEnd
+	private static int[] getSequence(int seqStart, int seqEnd, int[] array1) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private static void swap(Object[] arr, int a, int b) {
