@@ -41,7 +41,7 @@ public class AdvancedArrayMethods {
 	}
 	
 	public static int longestSharedSequence(int[] array1, int[] array2){
-		int max = 0;
+		int max = 0; //represents longest shared seq and its length
 		int count = 0;
 		
 		for(int seqStart = 0; seqStart < array1.length; seqStart++){
@@ -49,12 +49,13 @@ public class AdvancedArrayMethods {
 			int seqEnd = seqStart;
 			int[] seq = getSequence(seqStart, seqEnd, array1);
 			if(checkSequence(seq, array2)){
-				count++;
+				count++; //could just do sequence.length
 				if(count > max){
 					max = count;
 				}
 			}
 			//until this...seqEnd has to be increased after loop repeats
+			//somehow loop so sequence bcome longer
 			//until u cant find the sequence anymore
 			//reset the count after every sequence ahs been checked
 			count = 0;
@@ -64,8 +65,21 @@ public class AdvancedArrayMethods {
 	}
 
 	//returns true if sequence is found inside array2
-	private static boolean checkSequence(int[] seq, int[] array2) {
-		// TODO Auto-generated method stub
+	private static boolean checkSequence(int[] seq, int[] arr) {
+		//return true if swq iis found insdie array
+		A: for(int i = 0; i < arr.length; i++){
+			//j checks every element in seq
+			B: for(int j = 0; j < seq.length; j++){
+				if(seq[j] != arr[j+i]){
+					//j = seq.length; not that efficient
+					//breaks out of inner-most for loop
+					//unless particular for loop is specified
+					break;
+				}else if(j == seq.length-1){
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
