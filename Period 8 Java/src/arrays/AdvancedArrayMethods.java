@@ -5,6 +5,7 @@ public class AdvancedArrayMethods {
 	static int[] array;
 	
 	public static void main(String[] args) {
+		listPrimes(120);
 		/*array = new int[100]; //full of zeroes
 		int[] someArray = new int[50];
 		someArray = array;
@@ -29,6 +30,33 @@ public class AdvancedArrayMethods {
 		shuffle(array);
 	}
 	
+	private static void listPrimes(int limit) {
+		int lastToCheck = (int)(Math.sqrt(limit)); //reps last num im gonna check in this algorithm
+		boolean[] numbers = new boolean[limit + 1];
+		for(int i = 0; i < limit + 1; i++){
+			numbers[i] = true; //havent been crossed off yet
+		}
+		//0 and 1 are, by definition, not prime
+		numbers[0] = false;
+		numbers[1] = false;
+		//check all non-crossed off numbers (start with 2)
+		for(int prime = 2; prime <= lastToCheck; prime++){
+			if(numbers[prime]){
+				System.out.println("\n"+prime+ " is prime."+"Crossing off:");
+				for(int i = (int)(Math.pow(prime, 2)); i < limit + 1; i+= prime){
+					//start with prime squared and then go in the prime increment to cross out any multiples
+					System.out.print(i+", ");
+					numbers[i] = false;
+				}
+			}
+		}
+		//print the primes
+		System.out.println("\nThe primes are:");
+		for(int index = 0; index < numbers.length; index++){
+			if(numbers[index])System.out.print(index + ", ");
+		}
+	}
+
 	private static void shuffle(Object[] array) {
 		for(int i = 0; i < array.length; i++){
 			int random = (int)(Math.random()*6);
@@ -118,5 +146,5 @@ public class AdvancedArrayMethods {
 			System.out.println("ERROR: tried to copy array of two different lengths.");
 		}
 	}
-
+//2 crossed out 4 first...3 crossed out 9 etc
 }
