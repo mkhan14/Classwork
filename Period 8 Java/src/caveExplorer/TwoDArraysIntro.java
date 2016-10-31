@@ -28,7 +28,15 @@ public class TwoDArraysIntro {
 		for(String[] row: arr2D){
 			System.out.println(Arrays.toString(row));
 		}
-
+		//caveRoom[] borderingRooms;
+		//Door[] doors;
+		//door open locked
+		//[null, null, (1,4), (0,3)]
+		//string: description, directions, content
+		//controls
+		//inventory of objects like water backpack etc.
+		//String map
+		//one codes caves-connect doors one codes map-how print it out
 	}
 
 }
