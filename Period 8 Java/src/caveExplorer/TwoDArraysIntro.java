@@ -14,9 +14,9 @@ public class TwoDArraysIntro {
 	static int treasurej;
 	
 	public static void main(String[] args) {
-		arr2D = new String[5][5];
-		pic = new String[5][5];
-		for(int row = 0; row < arr2D.length; row++){
+		//arr2D = new String[5][5];
+		pic = new String[10][11];
+		/*for(int row = 0; row < arr2D.length; row++){
 			//populate with coordinates
 			for(int col = 0; col < arr2D[row].length; col++){
 				arr2D[row][col] = "("+row+", "+col+")";
@@ -27,10 +27,49 @@ public class TwoDArraysIntro {
 		startj = 2;
 		treasurei = 4;
 		treasurej = 3;
-		startExploring();
+		startExploring();*/
+		for(int row = 0; row < pic.length; row++){
+			for(int col = 0; col < pic[row].length; col++){
+				pic[row][col] = " ";
+			}
+		}
+		
+		for(int row = 0; row < pic.length; row++){
+			for(int col = 0; col < pic[0].length; col++){
+				if(row % 2 == 0){
+					pic[row][col] = "_";
+				}
+				if(col % 2 == 0){
+					pic[row][col] = "|";
+				}
+			}
+		}
+		/*for(int row = 0; row < pic.length; row++){
+			for(int col = 0; col < pic[0].length; col++){
+				if((row + 1) % 2 == 0){
+					pic[row][col] = "|"; 
+				}
+				if((row + 1) % 2 != 0){
+					pic[row][col] = "|";
+				}
+			}
+		}*/
+		
+		
+		for(int col = 0; col < pic[0].length; col++){
+			pic[0][col] = "_";
+			pic[pic.length - 1][col] = "_";
+			//pic[pic.length - 3][col] = "_";
+		}
+	
+		for(int row = 0; row < pic.length; row++){
+			pic[row][0] = "|";
+			pic[row][pic[0].length - 1] = "|";
+		}
+		printPic(pic);
 	}
 	
-	private static void startExploring() {
+	/*private static void startExploring() {
 		while(true){
 			printPic(pic);
 			//as you move make x move
@@ -50,7 +89,7 @@ public class TwoDArraysIntro {
 				//then make col for loop, then if mine[row][col] then field[row][col
 		}
 		
-	}
+	}*/
 
 	private static int[] interpretInput(String input) {
 		//verify input is valid
@@ -192,7 +231,7 @@ public class TwoDArraysIntro {
 				pic[row][col] = "| ";
 			}
 		}
-		for(int col = 0; c)
+		//for(int col = 0; c)
 	}
 
 	public static void other(){
