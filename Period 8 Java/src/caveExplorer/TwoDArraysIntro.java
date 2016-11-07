@@ -12,29 +12,30 @@ public class TwoDArraysIntro {
 	static int startj;
 	static int treasurei;
 	static int treasurej;
-	
+	static String[][] grid;
+
 	public static void main(String[] args) {
-		//arr2D = new String[5][5];
-		pic = new String[10][11];
-		/*for(int row = 0; row < arr2D.length; row++){
+		arr2D = new String[5][5];
+		//pic = new String[10][11];
+		for(int row = 0; row < arr2D.length; row++){
 			//populate with coordinates
 			for(int col = 0; col < arr2D[row].length; col++){
 				arr2D[row][col] = "("+row+", "+col+")";
 			}
 		}
-		
+
 		starti = 2;
 		startj = 2;
 		treasurei = 4;
 		treasurej = 3;
-		startExploring();*/
+		startExploring();
 		for(int row = 0; row < pic.length; row++){
 			for(int col = 0; col < pic[row].length; col++){
 				pic[row][col] = " ";
 			}
 		}
-		
-		for(int row = 0; row < pic.length; row++){
+
+		/*for(int row = 0; row < pic.length; row++){
 			for(int col = 0; col < pic[0].length; col++){
 				if(row % 2 == 0){
 					pic[row][col] = "_";
@@ -43,33 +44,23 @@ public class TwoDArraysIntro {
 					pic[row][col] = "|";
 				}
 			}
-		}
-		/*for(int row = 0; row < pic.length; row++){
-			for(int col = 0; col < pic[0].length; col++){
-				if((row + 1) % 2 == 0){
-					pic[row][col] = "|"; 
-				}
-				if((row + 1) % 2 != 0){
-					pic[row][col] = "|";
-				}
-			}
 		}*/
 		
-		
-		for(int col = 0; col < pic[0].length; col++){
+
+
+		/*for(int col = 0; col < pic[0].length; col++){
 			pic[0][col] = "_";
 			pic[pic.length - 1][col] = "_";
-			//pic[pic.length - 3][col] = "_";
 		}
-	
+
 		for(int row = 0; row < pic.length; row++){
 			pic[row][0] = "|";
 			pic[row][pic[0].length - 1] = "|";
-		}
-		printPic(pic);
+		}*/
+		//printPic(pic);
 	}
-	
-	/*private static void startExploring() {
+
+	private static void startExploring() {
 		while(true){
 			printPic(pic);
 			//as you move make x move
@@ -80,16 +71,19 @@ public class TwoDArraysIntro {
 			}
 			System.out.println("What do you want to do?");
 			String input = in.nextLine();
-			
+
 			int[] newCoordinates = interpretInput(input);
 			starti = newCoordinates[0];
 			startj = newCoordinates[1];
-			
-			for(row = 0; row < arr2D.length)
+
+			//for(int row = 0; row < arr2D.length; row ++ ){
+				
+			}
+			System.out.println("win");
 				//then make col for loop, then if mine[row][col] then field[row][col
 		}
-		
-	}*/
+
+	
 
 	private static int[] interpretInput(String input) {
 		//verify input is valid
@@ -119,7 +113,7 @@ public class TwoDArraysIntro {
 			newCoordinates[1] = currentj;
 		}else{
 			System.out.println("Sorry, you have reached the endge of the known universe. You may go no fartehr in that "
-			+ "direction");
+					+ "direction");
 		}
 		return newCoordinates;
 	}
@@ -146,7 +140,7 @@ public class TwoDArraysIntro {
 		}
 		return field;
 	}
-	
+
 	public static void mines(){
 		boolean[][] mines = new boolean[6][6];
 		plantMines(mines);
@@ -160,26 +154,26 @@ public class TwoDArraysIntro {
 		//this is faster
 		//for(int r = row - 1; r <= row + 1; r ++){
 		//	for(int c = col - 1; c <= col+1; c++){
-				//check that this element exists
-				//check if its in the bounds of the arrays
+		//check that this element exists
+		//check if its in the bounds of the arrays
 		//		if(r >= 0 && r < mines.length && c >= 0 && c < mines[0].length){
-					
+
 		//		}
 		//	}
 		//}
-		
+
 		//this method only considers actual elements
 		//this is slower, checking every item on the grid
 		//int count = 0;
 		//for(int r = 0; r < mines.length; r++){
 		//	for(int c = 0; c < mines[r].length; c++){
-			//	if(Math.abs(r - row) + Math.abs(c - col) == 1 && mines[r][c]){
-			//		count++;
-			//	}
-			//}
+		//	if(Math.abs(r - row) + Math.abs(c - col) == 1 && mines[r][c]){
+		//		count++;
+		//	}
+		//}
 		//}
 		//return ""+count;
-		
+
 		//this method allows you to be most specific
 		//for example you only want north and east
 		int count = 0;
@@ -202,25 +196,25 @@ public class TwoDArraysIntro {
 			int row = (int)(Math.random() * mines.length);
 			int col = (int)(Math.random() * mines[0].length);
 			//this prevents the same mine being selected twice
-//			while(mines[row][col]){
-//				int row = (int)(Math.random() * mines.length);
-//				int col = (int)(Math.random() * mines[0].length);
-//			}
+			//			while(mines[row][col]){
+			//				int row = (int)(Math.random() * mines.length);
+			//				int col = (int)(Math.random() * mines[0].length);
+			//			}
 			if(!mines[row][col]){
 				mines[row][col] = true;
 				numberOfMines--;
 			}
 		}
-		
+
 	}
-	
+
 	private static void makeGrid(){
 		//make box grid for hw for 11/4
 		/*for(int col = 0; col < pic[0].length; col++){
 			pic[0][col] = "_";
 			pic[pic.length - 1][col] = "_";
 		}
-		
+
 		for(int row = 1; row < pic.length; row++){
 			pic[row][0] = "|";
 			pic[row][pic[0].length - 1] = "|";
@@ -248,7 +242,7 @@ public class TwoDArraysIntro {
 		pic[1][2] = "-";
 		pic[1][4] = "-";
 		//pic[(int) (Math.random()* 5)][(int) (Math.random()* 5)] = "<(o.o)>";
-		
+
 		//grassy field
 		for(int row = 5; row < pic.length; row++){
 			for(int col = 0; col < pic[row].length; col++){
@@ -260,40 +254,40 @@ public class TwoDArraysIntro {
 			pic[0][col] = "_";
 			pic[pic.length - 1][col] = "_";
 		}
-		
+
 		for(int row = 1; row < pic.length; row++){
 			pic[row][0] = "|";
 			pic[row][pic[0].length - 1] = "|";
 		}
 	}
-	
+
 	public static void printPic(String[][] pic){
-			for(String[] row: pic){
-				for(String col: row){
-					System.out.print(col);
-				}
-				System.out.println();
+		for(String[] row: pic){
+			for(String col: row){
+				System.out.print(col);
 			}
+			System.out.println();
 		}
-	
+	}
+
 	public static void intro(){
 		String[] xox = {"x", "o", "x", "o", "x"};
 		System.out.println(Arrays.toString(xox));
 		//a 1D array prints a horizontal string
-		
+
 		String[][] arr2D = new String[5][4];
-				//length of 2d array is 5
-				//the length of each array in this 2d array is 4
+		//length of 2d array is 5
+		//the length of each array in this 2d array is 4
 		System.out.println("The height is "+arr2D.length);
 		System.out.println("The width is "+arr2D[0].length);
 		for(int row = 0; row < arr2D.length; row++){
-			
+
 			//populate with coordinates
 			for(int col = 0; col < arr2D[row].length; col++){
 				arr2D[row][col] = "("+row+", "+col+")";
 			}
 		}
-		
+
 		//print the 2D array
 		//Every element in a 2D array IS itself an array
 		//so a for-each loop looks like this:
