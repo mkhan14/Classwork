@@ -7,7 +7,7 @@ public class Pokemon {
 	private String name;
 	private boolean poisoned;
 	
-	public void Pokemon(String name, int level){
+	public Pokemon(String name, int level){
 		this.name = name;
 		this.level = level;
 		hp = 100;
