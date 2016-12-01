@@ -19,12 +19,28 @@ public class RecursionIntro {
 				value++;
 			}
 		});*/
-		hanoiSolution(3, "A", "B", "C");
+		//hanoiSolution(8, "A", "B", "C");
+		int n = 10;
+		System.out.println("The "+n+"th"+ fibonacci(n));
+	}
+	
+	private static int fibonacci(int n) {
+		if(n <= 1){
+			return 1;
+		}else{
+			int previous = fibonacci(n-1);
+			print("Before we find fibonacci "+n+" we need to"
+					+ " find fibonacci"+(n-1)+" which is "+previous);
+			int beforePrevious = fibonacci(n-2);
+			return previous + beforePrevious;
+		}
 	}
 	//you can pass method as parameter
 	//recursion is useful whenever a problem is based off a "trivial"
 	//case...though sometimes a for loop accomplishes the same thing
 	//multiple choice only for recursion in ap exam...4 cycles is enough
+
+	
 
 	private static void forLoop(int i, Action action) {
 		if(i <= 0){
@@ -55,11 +71,21 @@ public class RecursionIntro {
 	}
 	return 1;*/
 
+	private static int count = 1;
+	
+	public static void print(String s){
+		System.out.println("Move #"+count+":"+s);
+		count++;
+	}
+	
 	public static void hanoiSolution(int numberOfDiscs, String startPeg, String midPeg, String endPeg){
 		//built off a trivial case
 		if(numberOfDiscs <= 1){
-			System.out.println("Move "+startPeg+" to "+endPeg);
+			print("Move "+startPeg+" to "+endPeg);
 		}else{
+			System.out.println("In order to move "+numberOfDiscs+" over "
+					+"to peg "+endPeg+" we must move "+(numberOfDiscs-1)+
+					" over to peg "+midPeg+" first");
 			hanoiSolution(numberOfDiscs-1, startPeg, endPeg, midPeg);
 			hanoiSolution(1, startPeg, midPeg, endPeg);
 			hanoiSolution(numberOfDiscs-1, midPeg, startPeg, endPeg);
