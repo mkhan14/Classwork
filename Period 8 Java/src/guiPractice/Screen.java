@@ -18,7 +18,7 @@ public class Screen {
 	private void initImage() {
 		//buffered image data tells us what image it is
 		image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-		//a is alpha for transparency
+		//a is alpha for transparency//
 		update();
 	}
 

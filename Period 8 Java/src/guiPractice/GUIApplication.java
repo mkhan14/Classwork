@@ -13,7 +13,7 @@ public class GUIApplication extends JFrame{
 	//exit operation, close window close program
 	public static void main(String[] args) {
 		//make a window
-		new GUIApplication();
+		new GUIApplication();//
 
 	}
 	
