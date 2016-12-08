@@ -19,7 +19,7 @@ public class GUIApplication extends JFrame{
 	
 	public GUIApplication(){
 		//constructor for creating a window
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int x = 40;
 		int y = 40;
 		int width = 600;
