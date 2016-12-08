@@ -24,7 +24,7 @@ public class Screen {
 
 	public void update() {
 		//this is where you draw stuff
-		//everytime screen updates its gonna draw
+		//everytime screen updates its gonna draw//
 		Graphics2D g = image.createGraphics();
 		g.drawString(, 40, 40);
 	}
