@@ -1,5 +1,6 @@
 package guiPractice;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -26,7 +27,9 @@ public class Screen {
 		//this is where you draw stuff
 		//everytime screen updates its gonna draw//
 		Graphics2D g = image.createGraphics();
-		g.drawString(, 40, 40);
+		//graphics2d lets you construct things pixel by pixel
+		g.setColor(Color.black);
+		g.drawString("Hello", 40, 40);
 	}
 	
 	public BufferedImage getImage(){

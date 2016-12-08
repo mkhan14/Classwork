@@ -37,6 +37,8 @@ public class GUIApplication extends JFrame{
 	public void paint(Graphics g){
 		g.drawImage(currentScreen.getImage(), 0, 0, null);
 		//graphics is how you draw things
+		//abstraction...interfaces
+		//guidelines for any games we program
 	}
 
 }
