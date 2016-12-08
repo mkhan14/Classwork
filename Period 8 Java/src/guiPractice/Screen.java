@@ -1,6 +1,7 @@
 package guiPractice;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -29,6 +30,7 @@ public class Screen {
 		Graphics2D g = image.createGraphics();
 		//graphics2d lets you construct things pixel by pixel
 		g.setColor(Color.black);
+		g.setFont(new Font("Helvetica", Font.PLAIN, 20));
 		g.drawString("Hello", 40, 40);
 	}
 	
