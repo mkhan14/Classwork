@@ -14,13 +14,15 @@ public class GUIApplication extends JFrame{
 	public static void main(String[] args) {
 		//make a window
 		new GUIApplication();//
-
+		//ABSTRACTION
+		//interface-description of methods
+		//abstract class-same methods and same descriptions of methods
 	}
 	
 	public GUIApplication(){
 		//constructor for creating a window
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setUndecorated(true);
+		//setUndecorated(true);
 		int x = 40;
 		int y = 40;
 		int width = 600;
@@ -30,6 +32,7 @@ public class GUIApplication extends JFrame{
 		setVisible(true);
 	}
 
+	//method for creating and setting the starting screen
 	protected void initScreen() {
 		Screen startScreen = new Screen(getWidth(), getHeight());
 		currentScreen = startScreen;
