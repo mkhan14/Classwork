@@ -4,20 +4,18 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-public class GUIApplication extends JFrame{
+public abstract class GUIApplication extends JFrame{
 	
 	private Screen currentScreen;
 
 	//main method for practice only
 	//there is swing package...textbox...don't use...incompatible
 	//exit operation, close window close program
-	public static void main(String[] args) {
-		//make a window
-		new GUIApplication();//
+	
 		//ABSTRACTION
 		//interface-description of methods
 		//abstract class-same methods and same descriptions of methods
-	}
+	//you cannot instantiate an abstract class
 	
 	public GUIApplication(){
 		//constructor for creating a window
@@ -33,9 +31,10 @@ public class GUIApplication extends JFrame{
 	}
 
 	//method for creating and setting the starting screen
-	protected void initScreen() {
-		Screen startScreen = new Screen(getWidth(), getHeight());
-		currentScreen = startScreen;
+	protected abstract void initScreen();
+	
+	public void setScreen(Screen screen){
+		currentScreen = screen;
 	}
 	
 	public void paint(Graphics g){
