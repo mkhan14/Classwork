@@ -32,7 +32,19 @@ public class TextLabel extends Component {
 	public void setSize(int size){
 		this.size = size;
 	}
+	
+	public String getText() {
+		return text;
+	}
 
+	public String getFont() {
+		return font;
+	}
+
+	public int getSize() {
+		return size;
+	}
+	
 	@Override
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
