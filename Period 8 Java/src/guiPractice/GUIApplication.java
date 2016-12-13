@@ -1,10 +1,12 @@
 package guiPractice;
 
 import java.awt.Graphics;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
-public abstract class GUIApplication extends JFrame{
+public abstract class GUIApplication extends JFrame implements Runnable{
 	
 	private Screen currentScreen;
 
@@ -34,7 +36,21 @@ public abstract class GUIApplication extends JFrame{
 	protected abstract void initScreen();
 	
 	public void setScreen(Screen screen){
+		//stop control from last screen
+		if(currentScreen != null){
+			if(currentScreen.getMouseListener() != null){
+				removeMouseListener((MouseListener) currentScreen.getMouseListener());
+			}
+			if(currentScreen.getMouseMotionListener() != null){
+				removeMouseMotionListener((MouseMotionListener) currentScreen.getMouseMotionListener());
+			}
+		}
 		currentScreen = screen;
+		//add controls for new screen
+		if(currentScreen != null){
+			addMouseListener((MouseListener) currentScreen.getMouseListener());
+			addMouseMotionListener((MouseMotionListener) currentScreen.getMouseMotionListener());
+		}
 	}
 	
 	public void paint(Graphics g){
@@ -42,6 +58,20 @@ public abstract class GUIApplication extends JFrame{
 		//graphics is how you draw things
 		//abstraction...interfaces
 		//guidelines for any games we program
+	}
+	
+	public void run(){
+		while(true){
+			currentScreen.update();
+			//update the window
+			repaint();
+			try {
+				Thread.sleep(40);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

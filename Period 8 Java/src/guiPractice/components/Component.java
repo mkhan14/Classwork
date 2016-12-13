@@ -22,6 +22,13 @@ public abstract class Component implements Visible {
 		update(image.createGraphics());
 	}
 	
+	public Graphics2D clear(){
+		//resets the picture
+		image = new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);
+		return image.createGraphics();
+		//take a component and wipe it clean to start over again
+	}
+	
 	//draw the component
 	public abstract void update(Graphics2D g);
 
