@@ -11,25 +11,37 @@ public class Button extends TextLabel implements Clickable{
 	private Action action;
 	
 	public Button(int x, int y, int w, int h, String text, Color color,
-			Action action) {
+			guiPractice.sampleGames.Action action2) {
 		super(x, y, w, h, text);
 		this.color = color;
-		this.action = action;
+		this.action = action2;
+		update();
 		
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Color getColor(){
+		return color;
+	}
+	
+	public void setColor(Color c){
+		color = c;
+		update();
+		//updating pictures not data...everytime you wanna change something
 	}
 
 	@Override
 	public void update(Graphics2D g) {
-		g = clear();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(color);
+		g.fillRoundRect(0,0,getWidth(),getHeight(),35,25);
 		g.setColor(Color.black);
+		g.drawRoundRect(getX(), getY(), getWidth(), getHeight(), 25, 35);
+		g.setFont(new Font(getFont(),Font.PLAIN,getSize()));
 		if(getText() != null){
 			g.setFont(new Font(getFont(), Font.PLAIN, getSize()));
 			g.drawString(getText(), 4, getHeight()-5);	
 		}
-		g.drawRoundRect(getX(), getY(), getWidth(), getHeight(), 25, 35);
-		g.drawRoundRect(getX(), getY(), getWidth(), getHeight(), 25, 35);
 	}
 
 	@Override

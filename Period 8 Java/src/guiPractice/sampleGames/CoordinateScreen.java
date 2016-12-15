@@ -30,7 +30,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 				+ "as the paragraph gets to the edge"
 				+ " of the page, a new line is created.");
 		
-		myButton = new Button(40, 50, 100, 30, "Button", new Color(0,76, 153), new Action(){
+		myButton = new Button(40, 200, 80, 40, "Button", new Color(100,100,250), new Action(){
 			public void act(){
 				
 			}
