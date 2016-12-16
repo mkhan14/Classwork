@@ -11,10 +11,11 @@ public class Button extends TextLabel implements Clickable{
 	private Action action;
 	
 	public Button(int x, int y, int w, int h, String text, Color color,
-			guiPractice.sampleGames.Action action2) {
+			Action action
+			/*guiPractice.sampleGames.Action action2*/) {
 		super(x, y, w, h, text);
 		this.color = color;
-		this.action = action2;
+		this.action = action;
 		update();
 		
 		// TODO Auto-generated constructor stub
