@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Button extends TextLabel implements Clickable{
 
@@ -11,8 +13,7 @@ public class Button extends TextLabel implements Clickable{
 	private Action action;
 	
 	public Button(int x, int y, int w, int h, String text, Color color,
-			Action action
-			/*guiPractice.sampleGames.Action action2*/) {
+			Action action) {
 		super(x, y, w, h, text);
 		this.color = color;
 		this.action = action;
@@ -30,6 +31,10 @@ public class Button extends TextLabel implements Clickable{
 		update();
 		//updating pictures not data...everytime you wanna change something
 	}
+	
+	/*public Button getMouseListener(){
+		return this;
+	}*/
 
 	@Override
 	public void update(Graphics2D g) {
@@ -57,5 +62,35 @@ public class Button extends TextLabel implements Clickable{
 	public void act() {
 		action.act();
 	}
+
+	//@Override
+	/*public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}*/
 	
 }

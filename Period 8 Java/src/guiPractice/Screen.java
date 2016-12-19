@@ -64,6 +64,23 @@ public abstract class Screen {
 		//}
 	}
 	
+	public void moveToFront(Visible v){
+		if(viewObjects.contains(v)){
+			viewObjects.remove(v);
+			viewObjects.add(v); //very last object in list
+		}
+	}
+	
+	public void moveToBack(Visible v){
+		if(viewObjects.contains(v)){
+			viewObjects.remove(v);
+			viewObjects.add(0,v);
+			//moves all objects with index >=0
+			//forward by 1, increases size by 1
+			//adds object to index n
+		}
+	}
+	
 	public BufferedImage getImage(){
 		return image;
 	}
@@ -75,5 +92,37 @@ public abstract class Screen {
 	public MouseMotionListener getMouseMotionListener() {
 		return null;
 	}
-
+	
+	public void remove(Visible v){
+		//remove a visible from a screen
+		//ArrayList notes
+		//While this method is very simple, do not underestimate
+		//the trickiness of removing items in an ArrayList. It causes
+		//indices to change:
+		//Example suppose you have an ArrayList<integer> and you want
+		//to remove all values greater than 5
+		//this is BAD:
+		//for(int i = 0; i < list.size(); i ++){
+		//if(list.get(i) > 5) list.remove(i);	
+		//}
+		//suppose you have (4,5,6,7)
+		//the first integer to be removed is 6, at index 2
+		//since it gets removed, 7 moves from index 3 to 2
+		//your list is now (4,5,7)
+		//after you increment i, i becomes 3.
+		//this is out of bounds
+		//so 7 never gets removed
+		//instead when an object is removed
+		//decrease to compensate for change in size
+		//CORRECT
+		//for(int i = 0; i < list.size(); i ++){
+				//if(list.get(i) > 5) {
+					//list.remove(i);
+					//i--;
+				//}
+		//}
+		viewObjects.remove(v);
+		//this removes the object that has the same identity
+		//as v, not an object that is equal to v
+	}
 }

@@ -2,21 +2,24 @@ package guiPractice.sampleGames;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import guiPractice.Screen;
+import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.Graphic;
 import guiPractice.components.TextArea;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
-public class CoordinateScreen extends Screen implements MouseMotionListener{
+public class CoordinateScreen extends Screen implements MouseMotionListener, MouseListener{
 //this is where i put label
 	private TextLabel label;
 	private TextArea paragraph;
 	private Button myButton;
+	private Graphic picture;
 	
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
@@ -33,14 +36,14 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 		
 		myButton = new Button(40, 200, 80, 40, "Button", new Color(100,100,250), new Action(){
 			public void act(){
-				
+				MouseFollower.game.setScreen(MouseFollower.myScreen);
 			}
 		});
-		Graphic picture = new Graphic(50,50,"sampleImages/yoshi.jpg");
-		viewObjects.add(picture);
+		picture = new Graphic(50,50,.5,"resources/sampleImages/yoshi.jpg");
 		viewObjects.add(label);//push
 		viewObjects.add(paragraph);
 		viewObjects.add(myButton);
+		viewObjects.add(picture);
 	}
 
 	@Override
@@ -58,6 +61,36 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 	public MouseMotionListener getMouseMotionListener(){
 		return this;
 		//anytime you wanna use mouse you override method
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
