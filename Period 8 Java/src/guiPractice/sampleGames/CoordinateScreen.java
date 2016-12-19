@@ -63,6 +63,10 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 		//anytime you wanna use mouse you override method
 	}
 
+	public MouseListener getMouseListener(){
+		return this;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
