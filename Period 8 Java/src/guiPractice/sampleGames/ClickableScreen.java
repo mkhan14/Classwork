@@ -1,5 +1,6 @@
 package guiPractice.sampleGames;
 
+import java.awt.List;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import guiPractice.components.Visible;
 
 public abstract class ClickableScreen extends Screen implements MouseListener {
 
-	private ArrayList<Clickable> clickable;
+	private ArrayList<Clickable> clickables;
 	
 	public ClickableScreen(int width, int height) {
 		super(width, height);
@@ -51,8 +52,26 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 		return this;
 	}
 	
-	public abstract void initAllObjects(ArrayList<Visible> viewObjects){
-		
-	}
+	public abstract void initAllObjects(ArrayList<Visible> viewObjects);
 
+	public void mouseClicked(MouseEvent a){
+		for(Clickable c: clickables){
+			if(c.isHovered(a.getX(), a.getY())){
+				c.act();
+				break;
+			}
+		}
+	}
+	
+	 public void addObjects(Visible v){
+		 super.addObject(v);
+		 if(v instanceof Clickable){
+			 clickables.add((Clickable)v);
+		 }
+	 }
+	 
+	 public void remove(Visible v){
+		 super.remove(v);
+		 clickables.remove(v);
+	 }
 }
