@@ -17,6 +17,8 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 	public WhackAMoleScreen(int width, int height) {
 		super(width, height);
 		timeLeft = 60.0;
+		Thread app = new Thread(this);
+		app.start();
 		// TODO Auto-generated constructor stub
 	}
 
