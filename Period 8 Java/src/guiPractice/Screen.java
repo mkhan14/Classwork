@@ -135,4 +135,12 @@ public abstract class Screen {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public int getWidth(){
+		return width;
+	}
+	
+	public int getHeight(){
+		return height;
+	}
 }

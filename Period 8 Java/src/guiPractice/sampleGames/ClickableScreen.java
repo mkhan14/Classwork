@@ -9,7 +9,7 @@ import guiPractice.Screen;
 import guiPractice.components.Clickable;
 import guiPractice.components.Visible;
 
-public abstract class ClickableScreen extends Screen implements MouseListener {
+public abstract class ClickableScreen extends Screen implements MouseListener, Runnable {
 
 	private ArrayList<Clickable> clickables;
 	
