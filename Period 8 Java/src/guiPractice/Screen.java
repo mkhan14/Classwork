@@ -49,7 +49,8 @@ public abstract class Screen {
 		
 		g.setColor(Color.black);
 		//draw all visible components
-		for(Visible v:viewObjects){
+		for(int i = 0; i < viewObjects.size(); i++){
+			Visible v = viewObjects.get(i);
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
 		//g.setFont(new Font("Helvetica", Font.PLAIN, 20));
@@ -126,6 +127,24 @@ public abstract class Screen {
 					//i--;
 				//}
 		//}
+		//ALSO CORERCT
+		//for(int i = 0; i < list.size(); i ++){
+			//while(list.get(i) > 5 && list.get(i) > 5) {
+				//list.remove(i);
+			//}
+		//for this reason, the following doesn't even work!
+		//BECAUSE remove changes the size!
+		//for(Integer i:list){
+		//if(i > 5)list.remove(i);
+		//}
+		
+		//finally, if you remove using an index, it
+		//returns the moved object, so you can do this:
+		//System.out.println(list.move(0).toString()
+		//+ " was removed.");
+		//there will be a reference sheet on the ap exam
+		//methods for strings, list, objects, etc
+		//big deal on remove
 		viewObjects.remove(v);
 		//this removes the object that has the same identity
 		//as v, not an object that is equal to v

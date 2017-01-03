@@ -19,6 +19,8 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 		super(width, height);
 		timeLeft = 30.0;
 		Thread play = new Thread(this);
+		//this screen is animated
+		//thread has to control time things happening
 		play.start();
 		// TODO Auto-generated constructor stub
 	}
@@ -43,8 +45,9 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 	//the players aren't designed yet, so we use this method later,
 	//once we learn how to create the player
 	private PlayerInterface getAPlayer() {
-		// TODO Auto-generated method stub
-		return new Player(20,20);
+		// TODO Auto-generated method stub	
+		//return new Player(20,20);
+		return null;
 	}
 	
 	
@@ -52,13 +55,14 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 	//the enemies aren't designed yet, so we use this method later,
 	//once we learn how to create an Enemy (Mole)
 	private MoleInterface getAMole(){
-		return new Mole((int)getWidth()*Math.random);
+		//return new Mole((int)getWidth()*Math.random());
+		return null;
 	}
 
 	private void changeText(String s){
 		try{
-			Thread.sleep(1000);
 			label.setText(s);
+			Thread.sleep(1000);
 		}catch(InterruptedException e){
 			e.printStackTrace();
 		}
@@ -70,7 +74,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 		changeText("Set...");
 		changeText("Go!");
 		changeText("");
-		timeLabel.setText("+timeLeft");
+		timeLabel.setText(""+timeLeft);
 		while(timeLeft > 0){
 			//frame updates every 100ms
 			try{
@@ -82,6 +86,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable{
 			timeLabel.setText(""+(int)(timeLeft)*10/10.0);
 			disappearMoles();
 			addNewMoles();
+			//no need for while loop in simon
 		}
 	}
 	
