@@ -10,6 +10,7 @@ import guiPractice.Screen;
 import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.Graphic;
+import guiPractice.components.MovingComponent;
 import guiPractice.components.TextArea;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
@@ -40,10 +41,17 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 			}
 		});
 		picture = new Graphic(50,50,.5,"resources/sampleImages/yoshi.jpg");
+		
+		
+		
 		viewObjects.add(label);//push
 		viewObjects.add(paragraph);
 		viewObjects.add(myButton);
 		viewObjects.add(picture);
+		MovingComponent mc = new MovingComponent(30,60,80,80);
+		mc.setVy(3);
+		mc.play();
+		viewObjects.add(mc);
 	}
 
 	@Override
