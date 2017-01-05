@@ -21,7 +21,7 @@ public class Mole extends ClickableGraphic implements MoleInterface {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getAppearanceTime(double d) {
+	public double getAppearanceTime(double d) {
 		// TODO Auto-generated method stub
 		return appearanceTime;
 	}
