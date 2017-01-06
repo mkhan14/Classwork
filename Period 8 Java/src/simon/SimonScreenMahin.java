@@ -78,7 +78,7 @@ public class SimonScreenMahin extends ClickableScreen implements Runnable {
 	
 	public void nextRound() {
 		acceptingInput = false;
-		roundNumber ++;
+		roundNumber++;
 		progress.setRound(roundNumber);
 		sequence.add(randomMove());
 		progress.setSequenceSize(sequence.size());
