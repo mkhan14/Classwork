@@ -11,9 +11,8 @@ import guiPractice.sampleGames.ClickableScreen;
 
 public class SimonScreenMahin extends ClickableScreen implements Runnable {
 
-	private ArrayList<MoveInterfaceMahin> move;
+	private ArrayList<MoveInterfaceMahin> sequence;
 	private ProgressInterfaceMahin progress;
-	private ButtonInterfaceMahin button;
 	private TextLabel label;
 	private ButtonInterfaceMahin[] buttons;
 	 
@@ -21,13 +20,12 @@ public class SimonScreenMahin extends ClickableScreen implements Runnable {
 	private boolean acceptingInput;
 	private int sequenceIndex;
 	private int lastSelectedButton;
-	private ArrayList<MoveInterfaceMahin> sequence;
-	private int numberOfButtons;
+	
 	
 	public SimonScreenMahin(int width, int height) {
 		super(width, height);
-		Thread screen = new Thread(this);
-		screen.start();
+		Thread app = new Thread(this);
+		app.start();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -39,57 +37,7 @@ public class SimonScreenMahin extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		//addButtons();
-		Color[] colors = {Color.red, Color.blue, new Color(240,160,70), new Color(20,255,140), Color.yellow, new Color(180,90,210)};
-		String[] names = {"RED", "BLUE", "ORANGE", "GREEN", "YELLOW", "PURPLE"};
-		int buttonCount = 6;
-		buttons = new ButtonInterfaceMahin[buttonCount];
-		for(int i = 0; i < buttonCount; i++ ){
-			buttons[i] = getAButton();
-			buttons[i].setName(names[i]);
-			buttons[i].setColor(colors[i]);
-			buttons[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(buttonCount))));
-			buttons[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(buttonCount))));
-			final ButtonInterfaceMahin b = buttons[i];
-			System.out.println(b+" has x = "+b.getX()+", y ="+b.getY());
-			b.dim();
-			buttons[i].setAction(new Action() {
-
-				public void act() {
-
-						Thread buttonPress = new Thread(new Runnable() {
-							
-							public void run() {
-								b.highlight();
-								try {
-									Thread.sleep(500);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-								b.dim();
-								
-							}
-						});
-						buttonPress.start();
-						
-
-						if(acceptingInput && sequence.get(sequenceIndex).getButton() == b){
-							sequenceIndex++;
-						}else if(acceptingInput){
-							gameOver();
-							return;
-						}
-						if(sequenceIndex == sequence.size()){
-							Thread nextRound = new Thread(SimonScreenMahin.this);
-							nextRound.start();
-						}
-					}
-
-				
-
-			});
-			viewObjects.add(buttons[i]);
-		}
+		addButtons();
 		progress = getProgress();
 		label = new TextLabel(130,230,300,40,"Let's play Simon!");
 		sequence = new ArrayList<MoveInterfaceMahin>();
@@ -110,12 +58,12 @@ public class SimonScreenMahin extends ClickableScreen implements Runnable {
 		while(selection == lastSelectedButton){
 			selection = (int)(Math.random()*buttons.length);
 		}
+		b = buttons[selection];
 		lastSelectedButton = selection;
-		//return getMove(b);
-		return new Move(buttons[selection]);
+		return getMove(b);
 	}
 
-	private MoveInterfaceMahin getMove(Button b) {
+	private MoveInterfaceMahin getMove(ButtonInterfaceMahin b) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -133,17 +81,17 @@ public class SimonScreenMahin extends ClickableScreen implements Runnable {
 		roundNumber ++;
 		progress.setRound(roundNumber);
 		sequence.add(randomMove());
-		progress.setSequenceLength(sequence.size());
+		progress.setSequenceSize(sequence.size());
 		changeText("Simon's turn.");
 		label.setText("");
-		showSequence();
+		playSequence();
 		changeText("Your turn.");
 		label.setText("");
 		acceptingInput = true;
 		sequenceIndex = 0;
 }
 
-	private void showSequence() {
+	private void playSequence() {
 		ButtonInterfaceMahin b = null;
 		for(MoveInterfaceMahin m: sequence){
 			if(b!=null)b.dim();
@@ -171,9 +119,43 @@ public class SimonScreenMahin extends ClickableScreen implements Runnable {
 
 	private void addButtons() {
 		int numberOfButtons = 6;
-		new Color(100,180,255);
+		Color[] colors = {Color.red, Color.blue, new Color(240,160,70), new Color(20,255,140), Color.yellow, new Color(180,90,210)};
 		for(int i = 0; i < numberOfButtons; i++){
-			getAButton();
+			final ButtonInterfaceMahin b = getAButton();
+			b.setColor(colors[i]);
+			b.setX(160 + (int)(100*Math.cos(i*2*Math.PI/(numberOfButtons))));
+			b.setY(200 - (int)(100*Math.sin(i*2*Math.PI/(numberOfButtons))));
+			b.setAction(new Action(){
+				public void act(){
+					if(acceptingInput){
+					    Thread blink = new Thread(new Runnable(){
+
+					        public void run(){
+					        	b.highlight();
+					        	try{
+					        		Thread.sleep(800);
+					        		b.dim();
+					        	}catch(InterruptedException e){
+					        		e.printStackTrace();
+					        	}
+					        }
+
+
+					    });
+					    blink.start();
+					    if(b == sequence.get(sequenceIndex).getButton()){
+					    	sequenceIndex++;
+					    }else{
+					    	progress.gameOver();
+					    }
+					    if(sequenceIndex == sequence.size()){
+					    	Thread nextRound = new Thread(SimonScreenMahin.this);
+					    	nextRound.start();
+					    }
+					}
+				}
+			});
+			viewObjects.add(b);
 		}
 		
 	}

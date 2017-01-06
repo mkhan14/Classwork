@@ -16,7 +16,7 @@ public abstract class Screen {
 
 	private int width;
 	private int height;
-	private ArrayList<Visible> viewObjects;
+	protected ArrayList<Visible> viewObjects;
 	
 	protected BufferedImage image;
 	//constructor used by subclasses

@@ -53,13 +53,13 @@ public class Progress implements ProgressInterfaceMahin {
 	}
 
 	@Override
-	public void setSequenceLength(int size) {
+	public void gameOver() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void gameOver() {
+	public void setSequenceSize(int size) {
 		// TODO Auto-generated method stub
 		
 	}
