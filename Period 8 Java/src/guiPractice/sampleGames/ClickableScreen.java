@@ -15,7 +15,6 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 	
 	public ClickableScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
