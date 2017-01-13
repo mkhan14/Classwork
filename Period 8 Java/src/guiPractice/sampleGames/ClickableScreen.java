@@ -9,7 +9,7 @@ import guiPractice.Screen;
 import guiPractice.components.Clickable;
 import guiPractice.components.Visible;
 
-public abstract class ClickableScreen extends Screen implements MouseListener, Runnable {
+public abstract class ClickableScreen extends Screen implements MouseListener {
 
 	private ArrayList<Clickable> clickables;
 	
@@ -44,7 +44,14 @@ public abstract class ClickableScreen extends Screen implements MouseListener, R
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
+		//initAllObjects(viewObjects);
 		initAllObjects(viewObjects);
+		clickables = new ArrayList<Clickable>();
+		for(Visible v: viewObjects){
+			if(v instanceof Clickable){
+				clickables.add((Clickable)v);
+			}
+		}
 
 	}
 	
@@ -64,7 +71,7 @@ public abstract class ClickableScreen extends Screen implements MouseListener, R
 		}
 	}
 	
-	 public void addObjects(Visible v){
+	 public void addObject(Visible v){
 		 super.addObject(v);
 		 if(v instanceof Clickable){
 			 clickables.add((Clickable)v);
